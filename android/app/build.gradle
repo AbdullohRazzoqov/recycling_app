@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "com.recycling.mobdev"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 35
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
@@ -42,4 +42,7 @@ android {
 
 flutter {
     source = "../.."
+}
+dependencies {
+    implementation 'com.yandex.android:maps.mobile:4.6.1-full'
 }
