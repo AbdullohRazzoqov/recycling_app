@@ -32,7 +32,7 @@ class WAppBar extends StatelessWidget implements PreferredSizeWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
-                  title.tr(),
+                  title.tr().toUpperCase(),
                   style: AppStyles.getAppbarStyle().copyWith(
                       shadows: showTitleShadow
                           ? <Shadow>[

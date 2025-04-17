@@ -1,11 +1,19 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:recycling_app/features/home/home_screen.dart';
+import 'package:get_it/get_it.dart';
+import 'package:provider/provider.dart';
+import 'package:recycling_app/screens/app_main_screen.dart';
+
+import 'screens/location/provider/map_provider.dart';
+
+GetIt locator = GetIt.instance;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  locator
+      .registerSingleton<GlobalKey<ScaffoldState>>(GlobalKey<ScaffoldState>());
   await EasyLocalization.ensureInitialized();
   runApp(EasyLocalization(
       supportedLocales: const [
@@ -15,7 +23,7 @@ void main() async {
       ],
       path: 'assets/translations',
       fallbackLocale: const Locale('uz', "UZ"),
-      child: MyApp()));
+      child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -23,17 +31,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-      debugShowCheckedModeBanner: false,
-      title: 'Recycling App',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return ChangeNotifierProvider(
+      create: (context) => MapProvider(),
+      child: MaterialApp(
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
+        debugShowCheckedModeBanner: false,
+        title: 'Recycling App',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: const AppMainScreen(),
       ),
-      home: HomeScreen(),
     );
   }
 }

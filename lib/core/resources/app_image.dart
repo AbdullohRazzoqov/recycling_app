@@ -11,6 +11,9 @@ abstract class AppImages {
   static const String battery = "$imgPath/battery.png";
   static const String location = "$imgPath/Location.png";
   static const String recycling = "$imgPath/recycling.png";
+  static const String recyclingAddress = "$imgPath/recycling_address.png";
+  static const String outSideBox = "$imgPath/out_side_box.png";
+
   static String parseUrlLocal(String url) {
     return "$imgPath/$url.png";
   }
