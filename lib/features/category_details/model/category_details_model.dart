@@ -4,6 +4,7 @@ class CategoryDetailsModel {
   List<MaterialInfoModel> materialInfo;
   List acceptableProducts;
   List unacceptableProducts;
+ 
 
   CategoryDetailsModel({
     required this.materialInfo,

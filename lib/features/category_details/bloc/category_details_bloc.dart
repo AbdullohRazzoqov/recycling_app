@@ -25,8 +25,10 @@ class CategoryDetailsBloc
         List acceptableProducts =
             categorySnapshot.data()!['acceptable_product'];
 
-        final res =
-            await categorySnapshot.reference.collection("material_info").get();
+        final res = await categorySnapshot.reference
+            .collection("material_info")
+            .orderBy('code')
+            .get();
         final materialInfo = res.docs
             .map(
               (e) => MaterialInfoModel.fromMap(e.data()),
@@ -41,7 +43,6 @@ class CategoryDetailsBloc
       } catch (e) {
         emit(ErrorState(errorMessage: e.toString()));
       }
-      
     });
   }
 }

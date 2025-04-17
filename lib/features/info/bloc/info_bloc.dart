@@ -13,7 +13,7 @@ class InfoBloc extends Bloc<InfoEvent, InfoState> {
       final FirebaseFirestore firestore = FirebaseFirestore.instance;
       emit(LoadingState());
       try {
-        final categorys = await firestore.collection("category").get();
+        final categorys = await firestore.collection("category").orderBy('id', ).get();
         final List<CategoryModel> categories = categorys.docs
             .map((doc) => CategoryModel.fromMap(doc.data()))
             .toList();
@@ -34,7 +34,7 @@ class InfoBloc extends Bloc<InfoEvent, InfoState> {
             .where('name', isLessThan: "Coca" + 'z')
             .snapshots();
 
-        //return Event
+        //return State
       } catch (e) {
         emit(ErrorState(errorMessage: e.toString()));
       }

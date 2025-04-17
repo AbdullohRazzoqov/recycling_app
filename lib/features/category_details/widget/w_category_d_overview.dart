@@ -57,8 +57,8 @@ class WCategoryDOverview extends StatelessWidget {
               color: Colors.white,
             ),
             child: Center(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+              child: ListView(
+                ///  crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const SizedBox(
                     height: 36,
@@ -68,16 +68,21 @@ class WCategoryDOverview extends StatelessWidget {
                     style: AppStyles.getForumTitleStyle(),
                     textAlign: TextAlign.center,
                   ),
-                  Container(
-                    margin: EdgeInsets.only(
-                      top: 16,
-                      bottom: 28,
-                    ),
-                    width: 80,
-                    height: 8,
-                    decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(.9),
-                        borderRadius: BorderRadius.circular(24)),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(
+                          top: 16,
+                          bottom: 28,
+                        ),
+                        width: 80,
+                        height: 8,
+                        decoration: BoxDecoration(
+                            color: Colors.black.withOpacity(.9),
+                            borderRadius: BorderRadius.circular(24)),
+                      ),
+                    ],
                   ),
                   ...List.generate(
                       materialInfo.commonItems.length,

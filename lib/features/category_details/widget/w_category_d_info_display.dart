@@ -43,8 +43,8 @@ class WCategoryDInfoDisplay extends StatelessWidget {
             child: Center(
               child: Padding(
                 padding: const EdgeInsets.only(left: 66.0, right: 66),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                child: ListView(
+                  // crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(
                       height: 36,

@@ -18,8 +18,8 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   final List<Widget> _pages = [
     InfoScreen(),
-    LocationScreen(),
-    ScannerScreen(),
+   const LocationScreen(),
+   const ScannerScreen(),
     ForumScreen()
   ];
   void _onItemTapped(int index) {
@@ -31,7 +31,10 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pages[_selectedIndex],
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: _pages,
+      ),
       bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Color(0xff8DD0DD),
           currentIndex: _selectedIndex,

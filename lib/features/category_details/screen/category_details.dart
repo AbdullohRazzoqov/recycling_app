@@ -1,14 +1,14 @@
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recycling_app/features/category_details/bloc/category_details_bloc.dart';
 import 'package:recycling_app/features/category_details/widget/w_category_d_info_display.dart';
 import 'package:recycling_app/features/category_details/widget/w_category_d_overview.dart';
 
 import '../../info/model/category_model.dart';
- 
+
 class CategoryDetails extends StatefulWidget {
-  const CategoryDetails({super.key, required this.category});
-  final CategoryModel category;
+  const CategoryDetails({super.key, required this.paht});
+  final String paht;
   @override
   State<CategoryDetails> createState() => _CategoryDetailsState();
 }
@@ -16,13 +16,12 @@ class CategoryDetails extends StatefulWidget {
 class _CategoryDetailsState extends State<CategoryDetails> {
   int _currentPage = 0;
 
-
   late CategoryDetailsBloc categoryDetailsBloc;
 
   @override
   void initState() {
     categoryDetailsBloc = CategoryDetailsBloc();
-    categoryDetailsBloc.add(GetCategoryDetailsEvent(widget.category.imageUrl));
+    categoryDetailsBloc.add(GetCategoryDetailsEvent(widget.paht));
     super.initState();
   }
 
@@ -34,7 +33,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
-          title: Text(widget.category.name),
+          title: Text(widget.paht),
         ),
         body: BlocBuilder<CategoryDetailsBloc, CategoryDetailsState>(
           builder: (context, state) {
@@ -66,7 +65,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
                       state.categoryDetails.materialInfo.length + 1,
                       (index) => index == 0
                           ? WCategoryDInfoDisplay(
-                              imageUrl: widget.category.imageUrl,
+                              imageUrl: widget.paht,
                               acceptableProducts:
                                   state.categoryDetails.acceptableProducts,
                               unacceptableProducts:

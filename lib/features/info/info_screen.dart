@@ -32,11 +32,6 @@ class _InfoScreenState extends State<InfoScreen> {
     return BlocProvider(
       create: (context) => infoBloc,
       child: Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            infoBloc.add(GetCategorysEvent());
-          },
-        ),
         backgroundColor: AppColors.backgroundColor,
         appBar: WAppBar(title: 'ITEM SEARCH'),
         body: Column(
@@ -49,7 +44,7 @@ class _InfoScreenState extends State<InfoScreen> {
               padding: EdgeInsets.symmetric(horizontal: 40),
               child: Text(
                 "Search By Item:".tr(),
-                style:AppStyles.getForumTitleStyle(),
+                style: AppStyles.getForumTitleStyle(),
               ),
             ),
             const SizedBox(
@@ -115,7 +110,7 @@ class _InfoScreenState extends State<InfoScreen> {
                             context,
                             MaterialPageRoute(
                               builder: (context) => CategoryDetails(
-                                category: categories[index],
+                                paht: categories[index].imageUrl,
                               ),
                             ),
                           );
