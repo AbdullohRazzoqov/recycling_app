@@ -31,8 +31,8 @@ class _AppMainScreenState extends State<AppMainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:
-      Center(child: _pages.elementAt(_selectedIndex)),
+      resizeToAvoidBottomInset: false,
+      body: Center(child: _pages.elementAt(_selectedIndex)),
       //  IndexedStack(
       //   index: _selectedIndex,
       //   children: _pages,

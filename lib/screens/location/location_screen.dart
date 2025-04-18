@@ -8,19 +8,26 @@ import 'package:recycling_app/core/widget/w_main_input.dart';
 import 'package:recycling_app/screens/location/provider/map_provider.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
-class LocationScreen extends StatelessWidget {
+class LocationScreen extends StatefulWidget {
   const LocationScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!context.read<MapProvider>().isContextInitialized) {
-        context.read<MapProvider>().initContext(context);
-      }
-    });
+  State<LocationScreen> createState() => _LocationScreenState();
+}
 
+class _LocationScreenState extends State<LocationScreen> {
+  @override
+  void initState() {
+    if (!context.read<MapProvider>().isContextInitialized) {
+      context.read<MapProvider>().initContext(context);
+    }
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WAppBar(
+      appBar: const WAppBar(
         title: "BIN LOCATOR",
         showTitleShadow: true,
       ),
@@ -42,7 +49,18 @@ class LocationScreen extends StatelessWidget {
           top: 5,
           right: 0,
           child: WMainInput(
-            onTapSearch: (a) {},
+            onTapSearch: (a) async {
+              //TODO: Manzillarni qidirishda xato paydo bo'ldi(:
+
+              // final response = await YandexSuggest.getSuggestions(
+              //   text: "",
+              //   boundingBox: boundingBox,
+              //   suggestOptions: const SuggestOptions(
+              //     suggestType: SuggestType.unspecified,
+              //     suggestWords: true,
+              //   ),
+              // );
+            },
           ),
         ),
         Positioned(
@@ -66,7 +84,7 @@ class LocationScreen extends StatelessWidget {
                 color: Colors.grey.withOpacity(.2),
                 child: const Center(
                     child: CircularProgressIndicator(
-                  color: Colors.white,
+                  color: AppColors.white,
                   backgroundColor: AppColors.backgroundColor,
                 ))),
           )

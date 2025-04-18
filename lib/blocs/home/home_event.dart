@@ -9,3 +9,5 @@ final class SearchProductEvent extends HomeEvent {
   final String input;
   SearchProductEvent(this.input);
 }
+
+final class ClearProductsEvent extends HomeEvent {}

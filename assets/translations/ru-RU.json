@@ -6,5 +6,10 @@
     "Search By Item:": "Поиск по товару:",
     "Search By Category:": "Поиск по категории:",
     "SCAN YOUR ITEM": "СКАНИРУЙТЕ ВАШ ТОВАР",
-    "BIN LOCATOR": "ЛОКАТОР БИНА"
+    "BIN LOCATOR": "ЛОКАТОР БИНА",
+    "Search...": "Поиск...",
+    "Scan": "Скан",
+    "LOCATE NEAREST": "НАЙТИ БЛИЖАЙШИЙ",
+    "Recycle Categories":"Категории переработки",
+    "Instructions":"Инструкции:"
 }

@@ -6,5 +6,10 @@
     "Search By Item:":"Mahsulot bo'yicha qidirish:",
     "Search By Category:":"Kategoriya bo'yicha qidirish:",
     "SCAN YOUR ITEM": "MAHSULOTNI SKANERLANG",
-    "BIN LOCATOR": "BIN LOCATOR"
+    "BIN LOCATOR": "BIN LOCATOR",
+    "Search...": "Qidirish...",
+    "Scan":"Skan",
+    "LOCATE NEAREST":"Menga yaqini",
+    "Recycle Categories":"Qayta ishlash",
+    "Instructions":"Ko'rsatmalar:"
 }

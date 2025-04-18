@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recycling_app/core/resources/app_styles.dart';
 
+import '../../../core/resources/app_colors.dart';
 import '../../../core/resources/app_image.dart';
 import '../../../data/model/material_info_model.dart';
 
@@ -44,7 +45,7 @@ class WCategoryDOverview extends StatelessWidget {
           materialInfo.symbol,
           style: const TextStyle(
               fontWeight: FontWeight.w600,
-              color: Colors.black,
+              color: AppColors.black,
               fontSize: 20,
               fontFamily: 'Nunito'),
         ),
@@ -54,7 +55,7 @@ class WCategoryDOverview extends StatelessWidget {
         Expanded(
           child: Container(
             decoration: const BoxDecoration(
-              color: Colors.white,
+              color: AppColors.white,
             ),
             child: Center(
               child: ListView(
@@ -79,7 +80,7 @@ class WCategoryDOverview extends StatelessWidget {
                         width: 80,
                         height: 8,
                         decoration: BoxDecoration(
-                            color: Colors.black.withOpacity(.9),
+                            color: AppColors.black.withOpacity(.9),
                             borderRadius: BorderRadius.circular(24)),
                       ),
                     ],
@@ -89,7 +90,7 @@ class WCategoryDOverview extends StatelessWidget {
                       (index) => Text(
                             materialInfo.commonItems[index].toUpperCase(),
                             style: AppStyles.getForumTitleStyle().copyWith(
-                                color: Colors.black.withOpacity(.6),
+                                color: AppColors.black.withOpacity(.6),
                                 height: 1.75),
                             textAlign: TextAlign.center,
                           ))

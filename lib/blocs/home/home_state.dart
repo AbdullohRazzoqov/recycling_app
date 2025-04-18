@@ -1,18 +1,30 @@
 part of 'home_bloc.dart';
 
-@immutable
-sealed class HomeState {}
+class HomeState extends Equatable {
+  final StateStatus status;
+  final String message;
+  List<ProductModel> products;
+  List<CategoryModel> categories;
+  HomeState(
+      {this.status = StateStatus.normal,
+      this.categories = const [],
+      this.products = const [],
+      this.message = ''});
 
-final class InfoInitial extends HomeState {}
+  HomeState copyWith({
+    List<ProductModel>? products,
+    List<CategoryModel>? categories,
+    StateStatus? status,
+    String? message,
+  }) {
+    return HomeState(
+      status: status ?? StateStatus.normal,
+      message: message ?? '',
+      products: products ?? this.products,
+      categories: categories ?? this.categories,
+    );
+  }
 
-final class LoadingState extends HomeState {}
-
-final class ResCategoryState extends HomeState {
-  final List<CategoryModel> categories;
-  ResCategoryState({required this.categories});
-}
-
-final class ErrorState extends HomeState {
-  final String errorMessage;
-  ErrorState({required this.errorMessage});
+  @override
+  List<Object?> get props => [status, message, products, categories];  
 }

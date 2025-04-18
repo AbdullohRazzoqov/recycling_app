@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../core/resources/app_colors.dart';
 import '../../../core/resources/app_image.dart';
 import '../../../core/widget/w_bulleted_list.dart';
 
@@ -24,10 +25,13 @@ class WCategoryDInfoDisplay extends StatelessWidget {
           child: Stack(
             alignment: Alignment.center,
             children: [
-              Image.asset(
-                AppImages.parseUrlLocal(imageUrl),
-                width: 130,
-                height: 120,
+              Hero(
+                tag: imageUrl,
+                child: Image.asset(
+                  AppImages.parseUrlLocal(imageUrl),
+                  width: 130,
+                  height: 120,
+                ),
               ),
             ],
           ),
@@ -38,7 +42,7 @@ class WCategoryDInfoDisplay extends StatelessWidget {
         Expanded(
           child: Container(
             decoration: const BoxDecoration(
-              color: Colors.white,
+              color: AppColors.white,
             ),
             child: Center(
               child: Padding(
@@ -56,7 +60,7 @@ class WCategoryDInfoDisplay extends StatelessWidget {
                     WBulletedList(
                       listData: acceptableProducts,
                       textStyle:
-                          const TextStyle(fontSize: 24, color: Colors.black),
+                          const TextStyle(fontSize: 24, color: AppColors.black),
                     ),
                     const Text("NO:",
                         style:
@@ -64,7 +68,7 @@ class WCategoryDInfoDisplay extends StatelessWidget {
                     WBulletedList(
                       listData: unacceptableProducts,
                       textStyle:
-                          const TextStyle(fontSize: 24, color: Colors.black),
+                          const TextStyle(fontSize: 24, color: AppColors.black),
                     ),
                   ],
                 ),

@@ -4,6 +4,8 @@ import 'package:recycling_app/blocs/category_details/category_details_bloc.dart'
 import 'package:recycling_app/screens/category_details/widget/w_category_d_info_display.dart';
 import 'package:recycling_app/screens/category_details/widget/w_category_d_overview.dart';
 
+import '../../core/resources/app_colors.dart';
+
 class CategoryDetails extends StatefulWidget {
   const CategoryDetails({super.key, required this.paht});
   final String paht;
@@ -28,10 +30,16 @@ class _CategoryDetailsState extends State<CategoryDetails> {
     return BlocProvider(
       create: (context) => categoryDetailsBloc,
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
-          title: Text(widget.paht),
+          backgroundColor: AppColors.white,
+          title: Text(
+            widget.paht.toUpperCase(),
+            style: const TextStyle(
+                fontSize: 35,
+                fontWeight: FontWeight.w600,
+                fontFamily: 'Nunito'),
+          ),
         ),
         body: BlocBuilder<CategoryDetailsBloc, CategoryDetailsState>(
           builder: (context, state) {
@@ -80,7 +88,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
                 child: Text(state.errorMessage),
               );
             } else {
-              return SizedBox();
+              return const SizedBox();
             }
           },
         ),

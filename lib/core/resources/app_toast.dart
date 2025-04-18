@@ -18,7 +18,7 @@ abstract class AppToast {
       position: isTopCenter
           ? StyledToastPosition(align: Alignment.topCenter, offset: 50)
           : null,
-      textStyle: TextStyle(fontSize: 12, color: Colors.white),
+      textStyle: TextStyle(fontSize: 12, color: AppColors.white),
       duration: Duration(seconds: seconds ?? 6),
       backgroundColor: toastType == ToastType.success
           ? Color(0xff3BA06C)

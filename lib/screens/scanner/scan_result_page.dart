@@ -4,6 +4,7 @@ import 'package:recycling_app/screens/category_details/category_details.dart';
 import 'package:recycling_app/data/model/product_model.dart';
 import 'package:recycling_app/screens/scanner/widgets/w_text_border.dart';
 
+import '../../core/resources/app_colors.dart';
 import '../../core/widget/w_main.button.dart';
 
 class ScanResultPage extends StatelessWidget {
@@ -32,7 +33,7 @@ class ScanResultPage extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 26,
                         fontWeight: FontWeight.w600,
-                        color: Colors.white),
+                        color: AppColors.white),
                   ),
                   const SizedBox(
                     height: 18,
@@ -46,7 +47,7 @@ class ScanResultPage extends StatelessWidget {
                       style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w600,
-                          color: Colors.black)),
+                          color: AppColors.black)),
                   const SizedBox(
                     height: 32,
                   ),
@@ -56,7 +57,7 @@ class ScanResultPage extends StatelessWidget {
                         fontFamily: 'Nunito',
                         fontSize: 26,
                         fontWeight: FontWeight.w600,
-                        color: Colors.white),
+                        color: AppColors.white),
                   ),
                   Text(
                     product.category,
@@ -64,7 +65,7 @@ class ScanResultPage extends StatelessWidget {
                         fontFamily: 'Nunito',
                         fontSize: 26,
                         fontWeight: FontWeight.w600,
-                        color: Colors.white),
+                        color: AppColors.white),
                   ),
                   GestureDetector(
                     onTap: () {
@@ -78,7 +79,7 @@ class ScanResultPage extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w600,
-                            color: Colors.white,
+                            color: AppColors.white,
                             decoration: TextDecoration.underline)),
                   ),
                 ],

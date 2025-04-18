@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'app_colors.dart';
 
 abstract class AppStyles {
   AppStyles._();
 
-  static TextStyle getAppbarStyle() => const TextStyle(
-        fontSize: 30,
+  static TextStyle getAppbarStyle() => TextStyle(
+        fontSize: 30.sp,
         fontWeight: FontWeight.w600,
         color: Color(0xff1A441D),
         fontFamily: "Nunito",
@@ -36,6 +39,6 @@ abstract class AppStyles {
   static TextStyle getMapButtonStyle() => const TextStyle(
       fontSize: 26,
       fontWeight: FontWeight.w400,
-      color: Colors.white,
+      color: AppColors.white,
       fontFamily: 'SeoulNamsan');
 }

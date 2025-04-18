@@ -1,14 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:recycling_app/core/utils/app_permissions.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
 import '../../../data/model/recycling_address_model.dart';
 import '../recycling_address_detail.dart';
 
 class MapProvider extends ChangeNotifier {
-  static const initialCameraPosition = CameraPosition(
+  CameraPosition initialCameraPosition = const CameraPosition(
     target: Point(latitude: 39.909282, longitude: 66.185139),
     zoom: 15,
   );
@@ -18,7 +17,6 @@ class MapProvider extends ChangeNotifier {
   bool _isContextInitialized = false;
   String _selectedDocId = '';
   bool _isLoading = false;
-
   final List<MapObject> _mapObjects = [];
   final List<RecyclingAddressModel> _recyclingAddresses = [];
   final List<SuggestItem> _suggestItems = [];
@@ -35,8 +33,36 @@ class MapProvider extends ChangeNotifier {
     getRecyclingLocation();
   }
 
-  void onMapCreated(YandexMapController controller) {
+  void onMapCreated(YandexMapController controller) async {
     _mapController = controller;
+    _setLoading(true);
+    Position? currentLocation = await getCurrentLocation();
+    _setLoading(false);
+
+    if (currentLocation != null) {
+      initialCameraPosition = CameraPosition(
+        target: Point(
+            latitude: currentLocation.latitude,
+            longitude: currentLocation.longitude),
+        zoom: 15,
+      );
+
+      final a = PlacemarkMapObject(
+        mapId: const MapObjectId('user_location'),
+        point: Point(
+            latitude: currentLocation.latitude,
+            longitude: currentLocation.longitude),
+        // onTap: (_, __) => _handleMarkerTap(address),
+        opacity: 1,
+        direction: 90,
+        icon: PlacemarkIcon.single(PlacemarkIconStyle(
+          image: BitmapDescriptor.fromAssetImage('assets/icon/navigation.png'),
+        )),
+      );
+
+      _mapObjects.add(a);
+    }
+
     _mapController
         .moveCamera(CameraUpdate.newCameraPosition(initialCameraPosition));
     notifyListeners();
@@ -44,7 +70,6 @@ class MapProvider extends ChangeNotifier {
 
   Future<void> getRecyclingLocation() async {
     _setLoading(true);
-
     try {
       final FirebaseFirestore firestore = FirebaseFirestore.instance;
       final placesSnapshot = await firestore.collection("places").get();
@@ -55,7 +80,6 @@ class MapProvider extends ChangeNotifier {
       for (var place in placesSnapshot.docs) {
         final address = RecyclingAddressModel.fromJson(place.data())
           ..docName = place.id;
-
         _mapObjects.add(_createMapObject(address));
         _recyclingAddresses.add(address);
       }
@@ -69,10 +93,17 @@ class MapProvider extends ChangeNotifier {
   PlacemarkMapObject _createMapObject(RecyclingAddressModel address,
       {bool isSelected = false}) {
     if (isSelected) {
+      if (_selectedDocId.isNotEmpty) {
+        final index = _findMapObjectIndex(_selectedDocId);
+        if (index != -1) {
+          _mapObjects[index] = _createMapObject(_recyclingAddresses
+              .firstWhere((address) => address.docName == _selectedDocId));
+        }
+      }
       _selectedDocId = address.docName;
       _moveMapToAddress(address);
+      openRecyclingAddressDetails(_context, address);
     }
-
     return PlacemarkMapObject(
       mapId: MapObjectId(address.docName),
       point: Point(
@@ -95,8 +126,6 @@ class MapProvider extends ChangeNotifier {
       _mapObjects[index] = _createMapObject(address, isSelected: true);
       notifyListeners();
     }
-
-    openRecyclingAddressDetails(_context, address);
   }
 
   void _moveMapToAddress(RecyclingAddressModel address) {
@@ -127,7 +156,7 @@ class MapProvider extends ChangeNotifier {
 
   Future<void> nearbyRecyclingAddress() async {
     _setLoading(true);
-    final Position? currentLocation = await AppPermissions.getCurrentLocation();
+    final Position? currentLocation = await getCurrentLocation();
 
     if (currentLocation == null) {
       return;
@@ -166,6 +195,7 @@ class MapProvider extends ChangeNotifier {
       final index = _findMapObjectIndex(selectedRecycling.docName);
       if (index != -1) {
         _mapObjects[index] = _createMapObject(selectedRecycling);
+        _selectedDocId = '';
         notifyListeners();
       }
     } catch (e) {
@@ -178,6 +208,31 @@ class MapProvider extends ChangeNotifier {
   void _setLoading(bool value) {
     _isLoading = value;
     notifyListeners();
+  }
+
+  Future<Position?> getCurrentLocation() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      return null;
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return null;
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      return null;
+    }
+
+    return await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
   }
 }
 

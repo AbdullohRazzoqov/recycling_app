@@ -9,7 +9,7 @@ import '../../../core/resources/app_styles.dart';
 import '../../core/widget/w_bulleted_list.dart';
 
 class ForumScreen extends StatefulWidget {
- const  ForumScreen({super.key});
+  const ForumScreen({super.key});
 
   @override
   State<ForumScreen> createState() => _ForumScreenState();
@@ -42,7 +42,7 @@ class _ForumScreenState extends State<ForumScreen> {
                 if (state is LoadingState) {
                   return const Center(
                     child: CircularProgressIndicator(
-                      color: Colors.white,
+                      color: AppColors.white,
                     ),
                   );
                 } else if (state is ResForumState) {
@@ -55,11 +55,11 @@ class _ForumScreenState extends State<ForumScreen> {
                       const SizedBox(
                         height: 8,
                       ),
-                      //FAQs 
+                      //FAQs
                       Container(
                         padding: const EdgeInsets.all(22),
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: AppColors.white,
                           borderRadius: BorderRadius.circular(38),
                           boxShadow: [
                             BoxShadow(
@@ -85,7 +85,7 @@ class _ForumScreenState extends State<ForumScreen> {
                       Container(
                         padding: const EdgeInsets.all(22),
                         decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: AppColors.white,
                             borderRadius: BorderRadius.circular(38),
                             boxShadow: [
                               BoxShadow(

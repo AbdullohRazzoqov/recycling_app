@@ -1,10 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../resources/app_colors.dart';
 import '../resources/app_styles.dart';
 
 class WAppBar extends StatelessWidget implements PreferredSizeWidget {
-  WAppBar({
+  const WAppBar({
     super.key,
     required this.title,
     this.showTitleShadow = false,
@@ -23,10 +25,9 @@ class WAppBar extends StatelessWidget implements PreferredSizeWidget {
           right: -11,
           child: Container(
             alignment: Alignment.center,
-            height: 155,
             decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(45),
+              color: AppColors.white,
+              borderRadius: BorderRadius.circular(45.r),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -35,16 +36,16 @@ class WAppBar extends StatelessWidget implements PreferredSizeWidget {
                   title.tr().toUpperCase(),
                   style: AppStyles.getAppbarStyle().copyWith(
                       shadows: showTitleShadow
-                          ? <Shadow>[
+                          ? [
                               Shadow(
                                 offset: const Offset(0, 4),
                                 blurRadius: 4,
-                                color: Colors.black.withOpacity(0.25),
+                                color: AppColors.black.withOpacity(0.25),
                               ),
                             ]
                           : null),
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 18.h),
               ],
             ),
           ),
@@ -54,5 +55,5 @@ class WAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(70);
+  Size get preferredSize => Size.fromHeight(100.h);
 }

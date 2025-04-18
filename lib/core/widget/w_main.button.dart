@@ -24,7 +24,7 @@ class WMainButton extends StatefulWidget {
       this.styles = const TextStyle(
           fontSize: 26,
           fontWeight: FontWeight.w600,
-          color: Colors.white,
+          color: AppColors.white,
           fontFamily: 'Nunito')})
       : super(key: key);
 
@@ -92,7 +92,7 @@ class _WMainButtonState extends State<WMainButton>
                 decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.3),
+                      color: AppColors.black.withOpacity(0.3),
                       blurRadius: 4,
                       offset: const Offset(0, 4),
                     ),
@@ -102,8 +102,8 @@ class _WMainButtonState extends State<WMainButton>
                 ),
                 child: InkWell(
                   borderRadius: BorderRadius.circular(widget.borderRadius),
-                  splashColor: Colors.white,
-                  highlightColor: Colors.white,
+                  splashColor: AppColors.white,
+                  highlightColor: AppColors.white,
                   onTapDown: _onTapDown,
                   onTapUp: _onTapUp,
                   onTapCancel: _onTapCancel,
@@ -116,7 +116,7 @@ class _WMainButtonState extends State<WMainButton>
                               child: Transform.scale(
                                 scale: .9,
                                 child: const CircularProgressIndicator(
-                                  color: Colors.white,
+                                  color: AppColors.white,
                                   strokeWidth: 4,
                                 ),
                               ),
