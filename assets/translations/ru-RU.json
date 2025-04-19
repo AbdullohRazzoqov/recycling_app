@@ -10,6 +10,14 @@
     "Search...": "Поиск...",
     "Scan": "Скан",
     "LOCATE NEAREST": "НАЙТИ БЛИЖАЙШИЙ",
-    "Recycle Categories":"Категории переработки",
-    "Instructions":"Инструкции:"
+    "Recycle Categories": "Категории переработки",
+    "Instructions": "Инструкции:",
+    "Recycling Symbol:": "Символ переработки:",
+    "Category:":"Категория",
+    "Recycle Steps:":"Этапы переработки:",
+    "Permission required":"Требуется разрешение",
+    "Permissions denied forever":"Разрешения отклонены навсегда",
+    "Back":"Назад",
+    "Open app settings":"Открыть настройки"
+    
 }

@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
-import '../../../data/model/recycling_address_model.dart';
-import '../recycling_address_detail.dart';
+import '../data/model/recycling_address_model.dart';
+import '../screens/location/recycling_address_detail.dart';
 
 class MapProvider extends ChangeNotifier {
   CameraPosition initialCameraPosition = const CameraPosition(
@@ -228,6 +230,37 @@ class MapProvider extends ChangeNotifier {
     }
 
     if (permission == LocationPermission.deniedForever) {
+      print('object');
+      showDialog(
+        context: _context,
+        builder: (context) => AlertDialog(
+          title: Text('Permission required'.tr()),
+          content: Text(
+            'Permissions denied forever'.tr(),
+          ),
+          actionsAlignment: MainAxisAlignment.spaceBetween,
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text(
+                'Back'.tr(),
+              ),
+            ),
+            TextButton(
+              onPressed: () async {
+                await openAppSettings();
+                Navigator.pop(context);
+              },
+              child: Text(
+                'Open app settings'.tr(),
+                style: TextStyle(),
+              ),
+            ),
+          ],
+        ),
+      );
       return null;
     }
 

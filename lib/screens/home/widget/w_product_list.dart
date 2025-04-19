@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:recycling_app/data/model/product_model.dart';
+import 'package:recycling_app/config/routes.dart';
 
+import '../../../config/route_name.dart';
 import '../../../core/resources/app_colors.dart';
 import '../../category_details/category_details.dart';
 
@@ -36,11 +38,8 @@ class WProductList extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => CategoryDetails(
-                                paht: products[index].category)));
+                    Navigator.pushNamed(context, RouteNames.categoryDetails,
+                        arguments: products[index].category);
                   },
                   child: Text(
                     products[index].category.toUpperCase(),

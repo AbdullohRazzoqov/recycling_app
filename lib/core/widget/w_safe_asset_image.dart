@@ -1,11 +1,15 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class WSafeAssetImage extends StatelessWidget {
   final String assetPath;
   final String name;
-  const WSafeAssetImage({Key? key, required this.assetPath, required this.name})
+  final bool showText;
+  const WSafeAssetImage(
+      {Key? key,
+      required this.assetPath,
+      required this.name,
+      this.showText = true})
       : super(key: key);
 
   Future<bool> _assetExists(String path) async {
@@ -29,7 +33,7 @@ class WSafeAssetImage extends StatelessWidget {
         if (snapshot.hasData && snapshot.data == true) {
           return Column(
             children: [
-              Text(
+             if(showText) Text(
                 "For ${name[0].toUpperCase() + name.substring(1)}",
                 style: const TextStyle(
                     fontSize: 18,

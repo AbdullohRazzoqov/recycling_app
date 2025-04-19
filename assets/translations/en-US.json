@@ -11,5 +11,12 @@
     "Scan":"Scan",
     "LOCATE NEAREST":"LOCATE NEAREST",
     "Recycle Categories":"Recycle Categories",
-    "Instructions:":"Instructions"
+    "Instructions:":"Instructions",
+    "Recycling Symbol:":"Recycling Symbol:",
+    "Category:":"Category:",
+    "Recycle Steps:":"Recycle Steps:",
+    "Permission required":"Permission required",
+    "Permissions denied forever":"Permissions denied forever",
+    "Back":"Back",
+    "Open app settings":"Open app settings"
 }

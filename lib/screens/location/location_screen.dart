@@ -5,7 +5,7 @@ import 'package:recycling_app/core/resources/app_styles.dart';
 import 'package:recycling_app/core/widget/w_appbar.dart';
 import 'package:recycling_app/core/widget/w_main.button.dart';
 import 'package:recycling_app/core/widget/w_main_input.dart';
-import 'package:recycling_app/screens/location/provider/map_provider.dart';
+import 'package:recycling_app/provider/map_provider.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
 class LocationScreen extends StatefulWidget {

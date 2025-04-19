@@ -18,7 +18,11 @@ class WTextBorder extends StatelessWidget {
           Text(
               textAlign: TextAlign.center,
               'THIS IS A $name',
-              style: AppStyles.getTextBorderStyle().copyWith(foreground: null)),
+              style: const TextStyle(
+                  fontSize: 34,
+                  fontWeight: FontWeight.w600,
+                  fontFamily: 'Nunito',
+                  color: Colors.white)),
         ],
       ),
     );

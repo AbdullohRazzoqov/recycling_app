@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
+import 'package:recycling_app/app/app.dart';
 import 'package:recycling_app/screens/app_main_screen.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
-import 'screens/location/provider/map_provider.dart';
+import 'provider/map_provider.dart';
+import 'config/routes.dart';
 
 GetIt locator = GetIt.instance;
 
@@ -25,31 +27,5 @@ void main() async {
       ],
       path: 'assets/translations',
       fallbackLocale: const Locale('uz', "UZ"),
-      child: const MyApp()));
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(390, 844),
-      child: ChangeNotifierProvider(
-        create: (context) => MapProvider(),
-        child: MaterialApp(
-          localizationsDelegates: context.localizationDelegates,
-          supportedLocales: context.supportedLocales,
-          locale: context.locale,
-          debugShowCheckedModeBanner: false,
-          title: 'Recycling App',
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-            useMaterial3: true,
-          ),
-          home: const AppMainScreen(),
-        ),
-      ),
-    );
-  }
+      child: const App()));
 }

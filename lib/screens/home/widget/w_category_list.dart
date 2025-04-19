@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../../config/route_name.dart';
 import '../../../core/resources/app_image.dart';
 import '../../../data/model/category_model.dart';
+import '../../../config/routes.dart';
 import '../../category_details/category_details.dart';
 
 class WCategoryList extends StatelessWidget {
@@ -25,13 +27,10 @@ class WCategoryList extends StatelessWidget {
           tag: categories[index].path,
           child: GestureDetector(
             onTap: () {
-              Navigator.push(
+              Navigator.pushNamed(
                 context,
-                MaterialPageRoute(
-                  builder: (context) => CategoryDetails(
-                    paht: categories[index].imageUrl,
-                  ),
-                ),
+                RouteNames.categoryDetails,
+                arguments: categories[index].imageUrl,
               );
             },
             child: Container(

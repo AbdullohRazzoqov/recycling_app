@@ -11,5 +11,12 @@
     "Scan":"Skan",
     "LOCATE NEAREST":"Menga yaqini",
     "Recycle Categories":"Qayta ishlash",
-    "Instructions":"Ko'rsatmalar:"
+    "Instructions":"Ko'rsatmalar:",
+    "Recycling Symbol:":"Qayta ishlash belgisi:",
+    "Category:":"Turkum",
+    "Recycle Steps:":"Qayta ishlash bosqichlari:",
+    "Permission required":"Ruxsat kerak",
+    "Permissions denied forever":"Ruxsatlar abadiy rad etilgan",
+    "Back":"Orqaga",
+    "Open app settings":"Sozlamalarini oching"
 }

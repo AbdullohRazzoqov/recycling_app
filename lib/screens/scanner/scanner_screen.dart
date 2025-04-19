@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:recycling_app/blocs/scanner/scan_bloc.dart';
+import 'package:recycling_app/config/routes.dart';
+import '../../config/route_name.dart';
 import '../../core/resources/app_colors.dart';
 import '../../core/widget/w_main.button.dart';
 import 'scan_result_page.dart';
@@ -31,12 +33,10 @@ class _ScannerScreenState extends State<ScannerScreen> {
         listener: (context, state) {
           print(state);
           if (state is SeachResultState) {
-            Navigator.push(
+            Navigator.pushNamed(
               context,
-              MaterialPageRoute(
-                builder: (context) =>
-                    ScanResultPage(product: scanBloc.product!),
-              ),
+              RouteNames.scanResault,
+              arguments: scanBloc.product!,
             );
           } else if (state is ScanErrorState) {
             ScaffoldMessenger.of(context).showSnackBar(
@@ -87,6 +87,7 @@ class _ScannerScreenState extends State<ScannerScreen> {
                         text: "Scan",
                         isLoading: state is ScanLoadingState,
                         onPressed: () {
+                          barcode = '11111111';
                           if (barcode != null) {
                             scanBloc.add(SearchProductEvent(barcode!));
                           } else {

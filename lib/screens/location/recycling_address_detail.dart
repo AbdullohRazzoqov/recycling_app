@@ -5,10 +5,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:recycling_app/core/resources/app_image.dart';
 import 'package:recycling_app/data/model/recycling_address_model.dart';
-import 'package:recycling_app/screens/location/provider/map_provider.dart';
+import 'package:recycling_app/provider/map_provider.dart';
 
+import '../../config/route_name.dart';
 import '../../core/resources/app_colors.dart';
 import '../../core/widget/w_safe_asset_image.dart';
+import '../../config/routes.dart';
 import '../category_details/category_details.dart';
 
 class RecyclingAddressDetail extends StatefulWidget {
@@ -91,20 +93,15 @@ class _RecyclingAddressDetailState extends State<RecyclingAddressDetail> {
                           margin: EdgeInsets.symmetric(
                               horizontal: 76, vertical: 8.h),
                           height: 1,
-                          color: Color(0xffA2CE92),
+                          color: const Color(0xffA2CE92),
                         ),
                         //Category list
                         ...widget.recyclingAddress.category
                             .map((toElement) => GestureDetector(
                                   onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => CategoryDetails(
-                                          paht: toElement,
-                                        ),
-                                      ),
-                                    );
+                                    Navigator.pushNamed(
+                                        context, RouteNames.categoryDetails,
+                                        arguments: toElement);
                                   },
                                   child: Padding(
                                     padding: EdgeInsets.only(bottom: 2),
