@@ -3,8 +3,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:recycling_app/core/resources/app_styles.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
+import '../core/resources/app_colors.dart';
 import '../data/model/recycling_address_model.dart';
 import '../screens/location/recycling_address_detail.dart';
 
@@ -49,7 +51,7 @@ class MapProvider extends ChangeNotifier {
         zoom: 15,
       );
 
-      final a = PlacemarkMapObject(
+      final userLocation = PlacemarkMapObject(
         mapId: const MapObjectId('user_location'),
         point: Point(
             latitude: currentLocation.latitude,
@@ -62,7 +64,7 @@ class MapProvider extends ChangeNotifier {
         )),
       );
 
-      _mapObjects.add(a);
+      _mapObjects.add(userLocation);
     }
 
     _mapController
@@ -159,6 +161,7 @@ class MapProvider extends ChangeNotifier {
   Future<void> nearbyRecyclingAddress() async {
     _setLoading(true);
     final Position? currentLocation = await getCurrentLocation();
+    _setLoading(false);
 
     if (currentLocation == null) {
       return;
@@ -186,7 +189,6 @@ class MapProvider extends ChangeNotifier {
         notifyListeners();
       }
     }
-    _setLoading(false);
   }
 
   void closeBottomSheet(BuildContext context) {
@@ -234,6 +236,7 @@ class MapProvider extends ChangeNotifier {
       showDialog(
         context: _context,
         builder: (context) => AlertDialog(
+          backgroundColor: AppColors.white,
           title: Text('Permission required'.tr()),
           content: Text(
             'Permissions denied forever'.tr(),
@@ -246,6 +249,8 @@ class MapProvider extends ChangeNotifier {
               },
               child: Text(
                 'Back'.tr(),
+                style:
+                    AppStyles.nunitoSemiBold.copyWith(color: AppColors.black),
               ),
             ),
             TextButton(
@@ -255,7 +260,8 @@ class MapProvider extends ChangeNotifier {
               },
               child: Text(
                 'Open app settings'.tr(),
-                style: TextStyle(),
+                style:
+                    AppStyles.nunitoSemiBold.copyWith(color: AppColors.black),
               ),
             ),
           ],

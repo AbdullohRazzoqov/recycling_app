@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:recycling_app/core/resources/app_colors.dart';
 import 'package:recycling_app/core/resources/app_styles.dart';
 
 class WTextBorder extends StatelessWidget {
@@ -13,16 +15,19 @@ class WTextBorder extends StatelessWidget {
           Text(
             textAlign: TextAlign.center,
             'THIS IS A $name',
-            style: AppStyles.getTextBorderStyle(),
+            style: AppStyles.nunitoSemiBold.copyWith(
+              fontSize: 34.sp,
+              foreground: Paint()
+                ..style = PaintingStyle.stroke
+                ..strokeWidth = 3
+                ..color =  AppColors.c_C6E5BA,
+            ),
           ),
           Text(
               textAlign: TextAlign.center,
               'THIS IS A $name',
-              style: const TextStyle(
-                  fontSize: 34,
-                  fontWeight: FontWeight.w600,
-                  fontFamily: 'Nunito',
-                  color: Colors.white)),
+              style: AppStyles.nunitoSemiBold
+                  .copyWith(fontSize: 34, color: AppColors.white)),
         ],
       ),
     );

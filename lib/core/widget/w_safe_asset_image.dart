@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:recycling_app/core/resources/app_styles.dart';
+
+import '../resources/app_colors.dart';
 
 class WSafeAssetImage extends StatelessWidget {
   final String assetPath;
@@ -33,14 +37,14 @@ class WSafeAssetImage extends StatelessWidget {
         if (snapshot.hasData && snapshot.data == true) {
           return Column(
             children: [
-             if(showText) Text(
-                "For ${name[0].toUpperCase() + name.substring(1)}",
-                style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w400,
-                    color: Color(0xff1A441D),
-                    fontFamily: 'SeoulNamsan'),
-              ),
+              if (showText)
+                Text(
+                  "For ${name[0].toUpperCase() + name.substring(1)}",
+                  style: AppStyles.seoulRegular.copyWith(
+                    color: AppColors.c_1A441D,
+                    fontSize: 18.sp,
+                  ),
+                ),
               Image.asset(
                 assetPath,
               ),

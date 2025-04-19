@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recycling_app/core/resources/app_colors.dart';
 import 'package:recycling_app/core/widget/w_appbar.dart';
 import 'package:recycling_app/blocs/forum/forum_bloc.dart';
@@ -29,7 +30,7 @@ class _ForumScreenState extends State<ForumScreen> {
     return BlocProvider(
       create: (context) => _forumBloc,
       child: Scaffold(
-        backgroundColor: AppColors.backgroundColor,
+        backgroundColor: AppColors.c_C6E5BA,
         appBar: WAppBar(title: "FORUM"),
         body: SingleChildScrollView(
           child: Padding(
@@ -50,7 +51,10 @@ class _ForumScreenState extends State<ForumScreen> {
                     children: [
                       Text(
                         "FAQs:".tr(),
-                        style: AppStyles.getForumTitleStyle(),
+                        style: AppStyles.seoulRegular.copyWith(
+                          fontSize: 24.sp,
+                          color: AppColors.black,
+                        ),
                       ),
                       const SizedBox(
                         height: 8,
@@ -63,7 +67,7 @@ class _ForumScreenState extends State<ForumScreen> {
                           borderRadius: BorderRadius.circular(38),
                           boxShadow: [
                             BoxShadow(
-                                color: const Color(0xff000000).withOpacity(.25),
+                                color: AppColors.black.withOpacity(.25),
                                 blurRadius: 4,
                                 offset: const Offset(0, 4))
                           ],
@@ -76,7 +80,8 @@ class _ForumScreenState extends State<ForumScreen> {
                       ),
                       Text(
                         "QUICK TIPS & TRICKS:".tr(),
-                        style: AppStyles.getForumTitleStyle(),
+                        style: AppStyles.seoulRegular
+                            .copyWith(fontSize: 24.sp, color: AppColors.black),
                       ),
                       const SizedBox(
                         height: 12,
@@ -89,8 +94,7 @@ class _ForumScreenState extends State<ForumScreen> {
                             borderRadius: BorderRadius.circular(38),
                             boxShadow: [
                               BoxShadow(
-                                  color:
-                                      const Color(0xff000000).withOpacity(.25),
+                                  color: AppColors.black.withOpacity(.25),
                                   blurRadius: 4,
                                   offset: const Offset(0, 4))
                             ]),
@@ -118,8 +122,11 @@ class _ForumScreenState extends State<ForumScreen> {
                                               tip,
                                               textAlign: TextAlign.left,
                                               softWrap: true,
-                                              style: AppStyles
-                                                  .getForumContentStyle(),
+                                              style: AppStyles.seoulRegular
+                                                  .copyWith(
+                                                      fontSize: 15.sp,
+                                                      color: const Color(
+                                                          0xff1A441D)),
                                             ),
                                           ),
                                         )

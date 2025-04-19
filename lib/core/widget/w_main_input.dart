@@ -1,5 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:recycling_app/core/resources/app_styles.dart';
 
 import '../resources/app_colors.dart';
 
@@ -25,17 +27,15 @@ class WMainInput extends StatelessWidget {
                 borderRadius: BorderRadius.circular(borderRadius),
                 color: AppColors.white,
                 border: Border.all(
-                  color: const Color(0xff70B458),
+                  color: AppColors.c_70B458,
                 ),
               ),
               child: TextFormField(
                 onTapOutside: (event) =>
                     FocusManager.instance.primaryFocus?.unfocus(),
                 controller: controller,
-                style: const TextStyle(
-                  fontSize: 22,
-                  color: Color(0xffB5BDC2),
-                ),
+                style: AppStyles.seoulRegular
+                    .copyWith(color: AppColors.c_B5BDC2, fontSize: 22.sp),
                 decoration: InputDecoration(
                   hintText: "Search...".tr(),
                   contentPadding:
@@ -60,7 +60,7 @@ class WMainInput extends StatelessWidget {
               padding: const EdgeInsets.all(11),
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: const Color(0xff70B458),
+                  color: AppColors.c_70B458,
                   boxShadow: [
                     BoxShadow(
                         offset: const Offset(0, 4),

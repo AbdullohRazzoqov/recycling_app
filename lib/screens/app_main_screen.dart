@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../core/resources/app_colors.dart';
 import '../core/resources/app_icons.dart';
 import 'forum/forum_screen.dart';
 import 'home/home_screen.dart';
@@ -17,10 +18,10 @@ class AppMainScreen extends StatefulWidget {
 class _AppMainScreenState extends State<AppMainScreen> {
   int _selectedIndex = 0;
   final List<Widget> _pages = [
-    HomeScreen(),
+    const HomeScreen(),
     const LocationScreen(),
     const ScannerScreen(),
-    ForumScreen()
+    const ForumScreen()
   ];
   void _onItemTapped(int index) {
     setState(() {
@@ -38,7 +39,7 @@ class _AppMainScreenState extends State<AppMainScreen> {
       //   children: _pages,
       // ),
       bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Color(0xff8DD0DD),
+          backgroundColor: AppColors.c_8DD0DD,
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
           showSelectedLabels: false,

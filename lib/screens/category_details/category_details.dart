@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recycling_app/blocs/category_details/category_details_bloc.dart';
+import 'package:recycling_app/core/resources/app_styles.dart';
 import 'package:recycling_app/screens/category_details/widget/w_category_d_info_display.dart';
 import 'package:recycling_app/screens/category_details/widget/w_category_d_overview.dart';
 
@@ -35,10 +37,10 @@ class _CategoryDetailsState extends State<CategoryDetails> {
           backgroundColor: AppColors.white,
           title: Text(
             widget.paht.toUpperCase(),
-            style: const TextStyle(
-                fontSize: 35,
-                fontWeight: FontWeight.w600,
-                fontFamily: 'Nunito'),
+            style: AppStyles.nunitoSemiBold.copyWith(
+              fontSize: 35.sp,
+              color: AppColors.black,
+            ),
           ),
         ),
         body: BlocBuilder<CategoryDetailsBloc, CategoryDetailsState>(
@@ -48,40 +50,40 @@ class _CategoryDetailsState extends State<CategoryDetails> {
                 child: CircularProgressIndicator(),
               );
             } else if (state is ResCategoryDetail) {
-              return AnimatedContainer(
-                duration: const Duration(milliseconds: 100),
-                decoration: BoxDecoration(
-                    color: const Color(0xffA2CE92),
-                    borderRadius: BorderRadius.only(
-                      topLeft: _currentPage == 0
-                          ? const Radius.circular(45)
-                          : Radius.zero,
-                      topRight: _currentPage ==
-                              state.categoryDetails.materialInfo.length
-                          ? const Radius.circular(45)
-                          : Radius.zero,
-                    )),
-                child: PageView(
-                  onPageChanged: (value) {
-                    setState(() {
-                      _currentPage = value;
-                    });
-                  },
-                  children: List.generate(
-                      state.categoryDetails.materialInfo.length + 1,
-                      (index) => index == 0
-                          ? WCategoryDInfoDisplay(
-                              imageUrl: widget.paht,
-                              acceptableProducts:
-                                  state.categoryDetails.acceptableProducts,
-                              unacceptableProducts:
-                                  state.categoryDetails.unacceptableProducts,
-                            )
-                          : WCategoryDOverview(
-                              materialInfo:
-                                  state.categoryDetails.materialInfo[index - 1],
+              return PageView(
+                onPageChanged: (value) {
+                  setState(() {
+                    _currentPage = value;
+                  });
+                },
+                children: List.generate(
+                    state.categoryDetails.materialInfo.length + 1,
+                    (index) => Container(
+                        decoration: BoxDecoration(
+                            color: AppColors.primaryColor,
+                            borderRadius: BorderRadius.only(
+                              topLeft: index == 0
+                                  ? const Radius.circular(45)
+                                  : Radius.zero,
+                              topRight: index ==
+                                      state.categoryDetails.materialInfo.length
+                                  ? const Radius.circular(45)
+                                  : Radius.zero,
                             )),
-                ),
+                        child: index == 0
+                            ? WCategoryDInfoDisplay(
+                                imageUrl: widget.paht,
+                                acceptableProducts:
+                                    state.categoryDetails.acceptableProducts,
+                                unacceptableProducts:
+                                    state.categoryDetails.unacceptableProducts,
+                              )
+                            : WCategoryDOverview(
+                                isLast: index ==
+                                    state.categoryDetails.materialInfo.length,
+                                materialInfo: state
+                                    .categoryDetails.materialInfo[index - 1],
+                              ))),
               );
             } else if (state is ErrorState) {
               return Center(

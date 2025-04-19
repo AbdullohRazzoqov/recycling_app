@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:recycling_app/core/resources/app_styles.dart';
 import '../../../core/resources/app_colors.dart';
 import '../../../core/resources/app_image.dart';
 import '../../../core/widget/w_bulleted_list.dart';
@@ -36,14 +38,14 @@ class WCategoryDInfoDisplay extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(
-          height: 35,
+        SizedBox(
+          height: 35.h,
         ),
         Expanded(
           child: Container(
             decoration: const BoxDecoration(
-              color: AppColors.white,
-            ),
+                color: AppColors.white,
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(45))),
             child: Center(
               child: Padding(
                 padding: const EdgeInsets.only(left: 66.0, right: 66),
@@ -53,22 +55,23 @@ class WCategoryDInfoDisplay extends StatelessWidget {
                     const SizedBox(
                       height: 36,
                     ),
-                    const Text(
+                    Text(
                       "YES:",
-                      style: TextStyle(fontSize: 24, color: Color(0xff70B458)),
+                      style: AppStyles.seoulRegular.copyWith(
+                          fontSize: 24.sp, color:   AppColors.c_70B458),
                     ),
                     WBulletedList(
                       listData: acceptableProducts,
-                      textStyle:
-                          const TextStyle(fontSize: 24, color: AppColors.black),
+                      textStyle: AppStyles.seoulRegular
+                          .copyWith(fontSize: 24.sp, color: AppColors.black),
                     ),
-                    const Text("NO:",
-                        style:
-                            TextStyle(fontSize: 24, color: Color(0xffD63D3D))),
+                    Text("NO:",
+                        style: AppStyles.seoulRegular.copyWith(
+                            fontSize: 24.sp, color:   AppColors.c_D63D3D)),
                     WBulletedList(
                       listData: unacceptableProducts,
-                      textStyle:
-                          const TextStyle(fontSize: 24, color: AppColors.black),
+                      textStyle: AppStyles.seoulRegular
+                          .copyWith(fontSize: 24.sp, color: AppColors.black),
                     ),
                   ],
                 ),

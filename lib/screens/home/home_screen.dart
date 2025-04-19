@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recycling_app/blocs/home/home_bloc.dart';
 import 'package:recycling_app/core/resources/app_toast.dart';
 import 'package:recycling_app/core/resources/state_status.dart';
@@ -47,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Scaffold(
           resizeToAvoidBottomInset: false,
 
-          backgroundColor: AppColors.backgroundColor,
+          backgroundColor: AppColors.c_C6E5BA,
           //Appbar
           appBar: const WAppBar(title: 'ITEM SEARCH'),
           body: Column(
@@ -60,7 +61,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 40),
                 child: Text(
                   "Search By Item:".tr(),
-                  style: AppStyles.getForumTitleStyle(),
+                  style: AppStyles.seoulRegular
+                      .copyWith(fontSize: 24.sp, color: AppColors.black),
                 ),
               ),
               const SizedBox(
@@ -89,13 +91,16 @@ class _HomeScreenState extends State<HomeScreen> {
                               state.products.isNotEmpty
                                   ? "Searched products"
                                   : "Search By Category:".tr(),
-                              style: AppStyles.getForumTitleStyle(),
+                              style: AppStyles.seoulRegular.copyWith(
+                                fontSize: 24.sp,
+                                color: AppColors.black,
+                              ),
                             ),
                             state.products.isNotEmpty
                                 ? WMainButton(
                                     borderRadius: 12,
-                                    styles: AppStyles.getForumContentStyle()
-                                        .copyWith(color: Colors.white),
+                                    styles: AppStyles.seoulRegular.copyWith(
+                                        color: Colors.white, fontSize: 24.sp),
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 8, vertical: 4),
                                     text: 'Clear',
@@ -112,8 +117,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       if (state.status == StateStatus.loading) ...{
                         Expanded(
                           child: Shimmer.fromColors(
-                            baseColor: const Color(0xFFC2E4B5),
-                            highlightColor: const Color(0xff70B458),
+                            baseColor: AppColors.c_C2E4B5,
+                            highlightColor: AppColors.c_70B458,
                             child: GridView.count(
                               crossAxisCount: 2,
                               padding: const EdgeInsets.only(left: 30),
@@ -124,7 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   margin: const EdgeInsets.only(
                                       right: 24, bottom: 20),
                                   decoration: BoxDecoration(
-                                    color: const Color(0xff70B458),
+                                    color: AppColors.c_70B458,
                                     borderRadius: BorderRadius.circular(33),
                                   ),
                                 );

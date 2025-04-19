@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recycling_app/core/resources/app_image.dart';
+import 'package:recycling_app/core/resources/app_styles.dart';
 import 'package:recycling_app/core/widget/w_safe_asset_image.dart';
 import 'package:recycling_app/screens/category_details/category_details.dart';
 import 'package:recycling_app/data/model/product_model.dart';
@@ -18,7 +19,7 @@ class ScanResultPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffA2CE92),
+      backgroundColor: AppColors.primaryColor,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -33,13 +34,9 @@ class ScanResultPage extends StatelessWidget {
                   const SizedBox(
                     height: 44,
                   ),
-                  Text(
-                    "Recycling Symbol:".tr(),
-                    style: const TextStyle(
-                        fontSize: 26,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.white),
-                  ),
+                  Text("Recycling Symbol:".tr(),
+                      style: AppStyles.nunitoSemiBold
+                          .copyWith(fontSize: 26.sp, color: AppColors.white)),
                   const SizedBox(
                     height: 18,
                   ),
@@ -58,63 +55,43 @@ class ScanResultPage extends StatelessWidget {
                           ),
                           Text(
                             "${product.code}",
-                            style: const TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Nunito'),
+                            style: AppStyles.nunitoSemiBold.copyWith(
+                                fontSize: 24.sp, color: AppColors.black),
                           ),
                         ],
                       )
                     ],
                   ),
                   Text(product.symbol,
-                      style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.black)),
+                      style: AppStyles.nunitoSemiBold
+                          .copyWith(fontSize: 20.sp, color: AppColors.black)),
                   const SizedBox(
                     height: 32,
                   ),
-                  Text(
-                    "Category:".tr(),
-                    style: const TextStyle(
-                        fontFamily: 'Nunito',
-                        fontSize: 26,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.white),
-                  ),
-                  Text(
-                    product.category.toUpperCase(),
-                    style: const TextStyle(
-                        fontFamily: 'Nunito',
-                        fontSize: 26,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.white),
-                  ),
+                  Text("Category:".tr(),
+                      style: AppStyles.nunitoSemiBold
+                          .copyWith(fontSize: 26.sp, color: AppColors.white)),
+                  Text(product.category.toUpperCase(),
+                      style: AppStyles.nunitoSemiBold
+                          .copyWith(fontSize: 26.sp, color: AppColors.white)),
                   GestureDetector(
                     onTap: () {
                       Navigator.pushNamed(context, RouteNames.categoryDetails,
                           arguments: product.category);
                     },
-                    child: const Text("Click to learn more",
-                        style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600,
-                            decorationColor: Colors.white,
+                    child: Text("Click to learn more",
+                        style: AppStyles.nunitoSemiBold.copyWith(
+                            fontSize: 12.sp,
                             color: AppColors.white,
+                            decorationColor: AppColors.white,
                             decoration: TextDecoration.underline)),
                   ),
                   const SizedBox(
                     height: 24,
                   ),
-                  Text(
-                    "Recycle Steps:".tr(),
-                    style: const TextStyle(
-                        fontSize: 26,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                        fontFamily: 'Nunito'),
-                  ),
+                  Text("Recycle Steps:".tr(),
+                      style: AppStyles.nunitoSemiBold
+                          .copyWith(fontSize: 26.sp, color: AppColors.white)),
                   const SizedBox(
                     height: 24,
                   ),

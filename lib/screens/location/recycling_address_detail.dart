@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:recycling_app/core/resources/app_image.dart';
@@ -9,9 +8,8 @@ import 'package:recycling_app/provider/map_provider.dart';
 
 import '../../config/route_name.dart';
 import '../../core/resources/app_colors.dart';
+import '../../core/resources/app_styles.dart';
 import '../../core/widget/w_safe_asset_image.dart';
-import '../../config/routes.dart';
-import '../category_details/category_details.dart';
 
 class RecyclingAddressDetail extends StatefulWidget {
   const RecyclingAddressDetail({super.key, required this.recyclingAddress});
@@ -28,7 +26,7 @@ class _RecyclingAddressDetailState extends State<RecyclingAddressDetail> {
       duration: const Duration(milliseconds: 200),
       alignment: Alignment.topCenter,
       decoration: BoxDecoration(
-          color: const Color(0xff70B458).withOpacity(.5),
+          color:   AppColors.c_70B458.withOpacity(.5),
           borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(32), topRight: Radius.circular(32))),
       height: MediaQuery.of(context).size.height * (modalStretched ? 0.8 : 0.4),
@@ -55,23 +53,13 @@ class _RecyclingAddressDetailState extends State<RecyclingAddressDetail> {
                         SizedBox(
                           height: 40.h,
                         ),
-                        Text(
-                          widget.recyclingAddress.addressName,
-                          style: const TextStyle(
-                              fontSize: 26,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xff1A441D),
-                              fontFamily: 'SeoulNamsan'),
-                        ),
-                        Text(
-                          widget.recyclingAddress.addressFull,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xff1A441D),
-                              fontFamily: 'SeoulNamsan'),
-                        ),
+                        Text(widget.recyclingAddress.addressName,
+                            style: AppStyles.seoulRegular.copyWith(
+                                fontSize: 26, color: AppColors.c_1A441D)),
+                        Text(widget.recyclingAddress.addressFull,
+                            textAlign: TextAlign.center,
+                            style: AppStyles.seoulRegular.copyWith(
+                                color: AppColors.c_1A441D, fontSize: 13.sp)),
                         const SizedBox(
                           height: 4,
                         ),
@@ -81,19 +69,14 @@ class _RecyclingAddressDetailState extends State<RecyclingAddressDetail> {
                         const SizedBox(
                           height: 36,
                         ),
-                        Text(
-                          "Recycle Categories".tr(),
-                          style: const TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xff1A441D),
-                              fontFamily: 'SeoulNamsan'),
-                        ),
+                        Text("Recycle Categories".tr(),
+                            style: AppStyles.seoulRegular.copyWith(
+                                fontSize: 24.sp, color: AppColors.c_1A441D)),
                         Container(
                           margin: EdgeInsets.symmetric(
                               horizontal: 76, vertical: 8.h),
                           height: 1,
-                          color: const Color(0xffA2CE92),
+                          color:   AppColors.primaryColor,
                         ),
                         //Category list
                         ...widget.recyclingAddress.category
@@ -107,32 +90,27 @@ class _RecyclingAddressDetailState extends State<RecyclingAddressDetail> {
                                     padding: EdgeInsets.only(bottom: 2),
                                     child: Text(
                                       toElement.toUpperCase(),
-                                      style: const TextStyle(
-                                          fontSize: 18,
+                                      style: AppStyles.seoulRegular.copyWith(
+                                          fontSize: 18.sp,
+                                          color: AppColors.c_1A441D,
                                           decoration: TextDecoration.underline,
-                                          fontWeight: FontWeight.w400,
-                                          fontFamily: 'SeoulNamsan',
-                                          color: Color(0xff1A441D),
-                                          decorationColor: Color(0xff1A441D)),
+                                          decorationColor: AppColors.c_1A441D),
                                     ),
                                   ),
                                 )),
                         const SizedBox(
                           height: 48,
                         ),
-                        Text(
-                          "Instructions:".tr(),
-                          style: const TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xff1A441D),
-                              fontFamily: 'SeoulNamsan'),
-                        ),
+                        Text("Instructions:".tr(),
+                            style: AppStyles.seoulRegular.copyWith(
+                              color: AppColors.c_1A441D,
+                              fontSize: 24.sp,
+                            )),
                         Container(
                           margin: EdgeInsets.symmetric(
                               horizontal: 76, vertical: 6.h),
                           height: 1,
-                          color: const Color(0xffA2CE92),
+                          color:   AppColors.primaryColor,
                         ),
                         const SizedBox(
                           height: 22,

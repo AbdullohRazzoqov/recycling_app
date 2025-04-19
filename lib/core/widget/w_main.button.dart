@@ -15,13 +15,13 @@ class WMainButton extends StatefulWidget {
       {Key? key,
       required this.text,
       required this.onPressed,
-      this.backgroundColor = AppColors.buttonColor,
+      this.backgroundColor = AppColors.c_70B458,
       this.isLoading = false,
       this.padding =
           const EdgeInsets.only(top: 5, bottom: 10, left: 16, right: 16),
       this.borderRadius = 20,
       this.margin,
-      this.styles = const TextStyle(
+      this.styles =const  TextStyle(
           fontSize: 26,
           fontWeight: FontWeight.w600,
           color: AppColors.white,

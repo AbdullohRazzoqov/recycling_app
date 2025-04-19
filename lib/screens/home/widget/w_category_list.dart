@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:recycling_app/core/resources/app_styles.dart';
 
 import '../../../config/route_name.dart';
+import '../../../core/resources/app_colors.dart';
 import '../../../core/resources/app_image.dart';
 import '../../../data/model/category_model.dart';
 import '../../../config/routes.dart';
@@ -36,20 +39,17 @@ class WCategoryList extends StatelessWidget {
             child: Container(
               margin: const EdgeInsets.only(right: 24, bottom: 20),
               decoration: BoxDecoration(
-                color: const Color(0xff70B458),
+                color:   AppColors.c_70B458,
                 borderRadius: BorderRadius.circular(33),
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    categories[index].name,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                      color: Color(0xffFFFFFF),
-                    ),
-                  ),
+                  Text(categories[index].name,
+                      style: AppStyles.seoulRegular.copyWith(
+                        color: AppColors.white,
+                        fontSize: 20.sp,
+                      )),
                   const SizedBox(
                     height: 16,
                   ),
