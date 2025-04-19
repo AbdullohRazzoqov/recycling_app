@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meta/meta.dart';
 
+import '../../core/utils/constants/collection_name.dart';
 import '../../data/model/category_details_model.dart';
 import '../../data/model/material_info_model.dart';
 
@@ -16,7 +17,7 @@ class CategoryDetailsBloc
       final FirebaseFirestore firestore = FirebaseFirestore.instance;
       try {
         final categorySnapshot = await firestore
-            .collection("category_detail")
+            .collection(AppCollectionNames.categoryDetail)
             .doc(event.categoryId)
             .get();
 
@@ -26,7 +27,7 @@ class CategoryDetailsBloc
             categorySnapshot.data()!['acceptable_product'];
 
         final res = await categorySnapshot.reference
-            .collection("material_info")
+            .collection(AppCollectionNames.materialInfo)
             .orderBy('code')
             .get();
         final materialInfo = res.docs

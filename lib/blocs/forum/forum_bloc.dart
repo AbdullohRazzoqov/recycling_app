@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meta/meta.dart';
+import 'package:recycling_app/core/utils/constants/collection_name.dart';
 import 'package:recycling_app/data/model/forum_model.dart';
 
 part 'forum_event.dart';
@@ -13,7 +14,7 @@ class ForumBloc extends Bloc<ForumEvent, ForumState> {
       final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
       try {
-        final resForum = await firestore.collection('forum').doc('forum').get();
+        final resForum = await firestore.collection(AppCollectionNames.forum).doc('forum').get();
 
         if (resForum.data() != null && resForum.exists) {
           final ForumModel forum = ForumModel.fromMap(resForum.data()!);

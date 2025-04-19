@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:recycling_app/core/resources/app_styles.dart';
+import 'package:recycling_app/core/utils/constants/collection_name.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
 import '../core/resources/app_colors.dart';
@@ -76,7 +77,8 @@ class MapProvider extends ChangeNotifier {
     _setLoading(true);
     try {
       final FirebaseFirestore firestore = FirebaseFirestore.instance;
-      final placesSnapshot = await firestore.collection("places").get();
+      final placesSnapshot =
+          await firestore.collection(AppCollectionNames.places).get();
 
       _mapObjects.clear();
       _recyclingAddresses.clear();

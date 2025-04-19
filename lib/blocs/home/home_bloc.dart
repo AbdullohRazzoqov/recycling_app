@@ -6,6 +6,7 @@ import 'package:meta/meta.dart';
 import 'package:recycling_app/core/resources/state_status.dart';
 import 'package:recycling_app/data/model/product_model.dart';
 
+import '../../core/utils/constants/collection_name.dart';
 import '../../data/model/category_model.dart';
 
 part 'home_event.dart';
@@ -18,7 +19,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       emit(state.copyWith(status: StateStatus.loading));
       try {
         final categorys = await firestore
-            .collection("category")
+            .collection(AppCollectionNames.category)
             .orderBy(
               'id',
             )
@@ -37,7 +38,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       try {
         print(event.input);
         final resSearch = firestore
-            .collection('products')
+            .collection(AppCollectionNames.products)
             .where('name', isGreaterThanOrEqualTo: event.input)
             .where('name', isLessThan: '${event.input}z')
             .snapshots();

@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meta/meta.dart';
+import 'package:recycling_app/core/utils/constants/collection_name.dart';
 import 'package:recycling_app/data/model/product_model.dart';
 
 part 'scan_event.dart';
@@ -14,7 +15,7 @@ class ScanBloc extends Bloc<ScanEvent, ScanState> {
       emit(ScanLoadingState());
       try {
         final resSearch = firestore
-            .collection('products')
+            .collection(AppCollectionNames.products)
             .where('barcode', isGreaterThanOrEqualTo: event.barcode)
             .where('barcode', isLessThan: '${event.barcode}z')
             .snapshots();
