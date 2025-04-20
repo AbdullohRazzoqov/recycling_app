@@ -26,13 +26,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<SearchProductEvent>((event, emit) async {
       emit(state.copyWith(status: StateStatus.loading));
       final res = await firestoreUsecases.searchProducts(event.input);
+       print('res.data: ${res.data}');
       if (res is DataSuccess) {
         if (res.data == null || res.data!.isEmpty) {
-          emit(state.copyWith( products: [], message: "Product topilmadi"));
+          emit(state.copyWith(products: [], message: "Product topilmadi"));
         } else {
           emit(state.copyWith(status: StateStatus.loaded, products: res.data));
         }
-      } else if (res is DataError) {
+      } else {
         emit(state.copyWith(
             status: StateStatus.error, message: "Ulanishda muammo"));
       }
