@@ -36,7 +36,7 @@ class WAppBar extends StatelessWidget implements PreferredSizeWidget {
                   title.tr().toUpperCase(),
                   style: AppStyles.nunitoSemiBold.copyWith(
                       fontSize: 30.sp,
-                      color:   AppColors.c_1A441D,
+                      color: AppColors.c_1A441D,
                       shadows: showTitleShadow
                           ? [
                               Shadow(
@@ -57,5 +57,5 @@ class WAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(90.h);
+  Size get preferredSize => Size.fromHeight(100.h);
 }

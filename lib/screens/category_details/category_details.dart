@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recycling_app/blocs/category_details/category_details_bloc.dart';
 import 'package:recycling_app/core/resources/app_styles.dart';
+import 'package:recycling_app/data/domain/usecases/firestore_usecases.dart';
 import 'package:recycling_app/screens/category_details/widget/w_category_d_info_display.dart';
 import 'package:recycling_app/screens/category_details/widget/w_category_d_overview.dart';
 
@@ -22,7 +23,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
 
   @override
   void initState() {
-    categoryDetailsBloc = CategoryDetailsBloc();
+    categoryDetailsBloc = CategoryDetailsBloc(FirestoreUsecases(firestoreRepo: context.read()));
     categoryDetailsBloc.add(GetCategoryDetailsEvent(widget.paht));
     super.initState();
   }

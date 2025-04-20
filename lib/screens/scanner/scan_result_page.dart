@@ -4,18 +4,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recycling_app/core/resources/app_image.dart';
 import 'package:recycling_app/core/resources/app_styles.dart';
 import 'package:recycling_app/core/widget/w_safe_asset_image.dart';
-import 'package:recycling_app/screens/category_details/category_details.dart';
-import 'package:recycling_app/data/model/product_model.dart';
-import 'package:recycling_app/screens/scanner/widgets/w_text_border.dart';
+import 'package:recycling_app/data/domain/entities/product_entities.dart';
+  import 'package:recycling_app/screens/scanner/widgets/w_text_border.dart';
 
 import '../../config/route_name.dart';
 import '../../core/resources/app_colors.dart';
 import '../../core/widget/w_main.button.dart';
-import '../../config/routes.dart';
-
+ 
 class ScanResultPage extends StatelessWidget {
   const ScanResultPage({super.key, required this.product});
-  final ProductModel product;
+  final ProductEntities product;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

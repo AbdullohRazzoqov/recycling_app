@@ -8,7 +8,7 @@ final class ForumInitial extends ForumState {}
 final class LoadingState extends ForumState {}
 
 final class ResForumState extends ForumState {
-  final ForumModel forum;
+  final ForumEntities forum;
   ResForumState({required this.forum});
 }
 

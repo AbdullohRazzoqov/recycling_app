@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recycling_app/core/resources/app_styles.dart';
+import 'package:recycling_app/data/domain/entities/material_info_entities.dart';
 
 import '../../../core/resources/app_colors.dart';
 import '../../../core/resources/app_image.dart';
-import '../../../data/model/material_info_model.dart';
-
+ 
 class WCategoryDOverview extends StatelessWidget {
   const WCategoryDOverview({
     super.key,
     required this.materialInfo,
     required this.isLast,
   });
-  final MaterialInfoModel materialInfo;
+  final MaterialInfoEntities materialInfo;
   final bool isLast;
   @override
   Widget build(BuildContext context) {

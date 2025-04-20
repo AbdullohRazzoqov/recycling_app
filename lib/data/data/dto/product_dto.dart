@@ -1,17 +1,19 @@
-class ProductModel {
+import 'package:recycling_app/data/domain/entities/product_entities.dart';
+
+class ProductDto extends ProductEntities {
   final String category;
   final String name;
   final String symbol;
   final int code;
 
-  ProductModel({
+  ProductDto({
     required this.category,
     required this.name,
     required this.symbol,
     required this.code,
-  });
-  factory ProductModel.fromJson(Map<String, dynamic> json) {
-    return ProductModel(
+  }) : super(category: category, name: name, symbol: symbol, code: code);
+  factory ProductDto.fromMap(Map<String, dynamic> json) {
+    return ProductDto(
       category: json['category'] ?? '',
       name: json['name'] ?? '',
       symbol: json['symbol'] ?? '',

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recycling_app/core/resources/app_styles.dart';
-import 'package:recycling_app/data/model/product_model.dart';
-
+import 'package:recycling_app/data/domain/entities/product_entities.dart';
+ 
 import '../../../config/route_name.dart';
 import '../../../core/resources/app_colors.dart';
 
 class WProductList extends StatelessWidget {
   const WProductList({super.key, required this.products});
-  final List<ProductModel> products;
+  final List<ProductEntities> products;
   @override
   Widget build(BuildContext context) {
     return Expanded(

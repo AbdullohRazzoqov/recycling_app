@@ -6,6 +6,7 @@ import 'package:recycling_app/blocs/home/home_bloc.dart';
 import 'package:recycling_app/core/resources/app_toast.dart';
 import 'package:recycling_app/core/resources/state_status.dart';
 import 'package:recycling_app/core/widget/w_main.button.dart';
+import 'package:recycling_app/data/domain/usecases/firestore_usecases.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../core/resources/app_colors.dart';
@@ -26,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
   late HomeBloc homeBloc;
   @override
   void initState() {
-    homeBloc = HomeBloc();
+    homeBloc = HomeBloc(FirestoreUsecases(firestoreRepo: context.read()));
     super.initState();
   }
 
@@ -61,6 +62,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 40),
                 child: Text(
                   "Search By Item:".tr(),
+                  overflow: TextOverflow.clip,
+                  maxLines: 1,
                   style: AppStyles.seoulRegular
                       .copyWith(fontSize: 24.sp, color: AppColors.black),
                 ),
@@ -87,13 +90,17 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              state.products.isNotEmpty
-                                  ? "Searched products"
-                                  : "Search By Category:".tr(),
-                              style: AppStyles.seoulRegular.copyWith(
-                                fontSize: 24.sp,
-                                color: AppColors.black,
+                            Flexible(
+                              child: Text(
+                                overflow: TextOverflow.clip,
+                                maxLines: 1,
+                                state.products.isNotEmpty
+                                    ? "Searched products"
+                                    : "Search By Category:".tr(),
+                                style: AppStyles.seoulRegular.copyWith(
+                                  fontSize: 24.sp,
+                                  color: AppColors.black,
+                                ),
                               ),
                             ),
                             state.products.isNotEmpty

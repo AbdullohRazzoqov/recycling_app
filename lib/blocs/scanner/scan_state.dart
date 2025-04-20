@@ -8,7 +8,7 @@ final class ScanInitial extends ScanState {}
 
 
 final class SeachResultState extends ScanState {
-  final ProductModel product;
+  final ProductEntities product;
   SeachResultState(this.product);
 }
 

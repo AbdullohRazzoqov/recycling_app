@@ -1,10 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:recycling_app/data/domain/entities/product_entities.dart';
 import 'package:recycling_app/screens/app_main_screen.dart';
 import 'package:recycling_app/screens/category_details/category_details.dart';
 import 'package:recycling_app/screens/scanner/scan_result_page.dart';
 
-import '../data/model/product_model.dart';
 import 'route_name.dart';
 
 class AppRoutes {
@@ -16,7 +16,7 @@ class AppRoutes {
       case RouteNames.scanResault:
         return navigate(
           ScanResultPage(
-            product: settings.arguments as ProductModel,
+            product: settings.arguments as ProductEntities,
           ),
         );
       case RouteNames.categoryDetails:

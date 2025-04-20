@@ -1,12 +1,13 @@
-import 'material_info_model.dart';
+import 'package:recycling_app/data/domain/entities/material_info_entities.dart';
 
-class CategoryDetailsModel {
-  List<MaterialInfoModel> materialInfo;
+
+class CategoryDetailsEntities {
+  List<MaterialInfoEntities> materialInfo;
   List acceptableProducts;
   List unacceptableProducts;
  
 
-  CategoryDetailsModel({
+  CategoryDetailsEntities({
     required this.materialInfo,
     required this.acceptableProducts,
     required this.unacceptableProducts,

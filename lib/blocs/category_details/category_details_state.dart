@@ -8,7 +8,7 @@ final class CategoryDetailsInitial extends CategoryDetailsState {}
 class LoadingState extends CategoryDetailsState {}
 
 class ResCategoryDetail extends CategoryDetailsState {
-  final CategoryDetailsModel categoryDetails;
+  final CategoryDetailsEntities categoryDetails;
   ResCategoryDetail({required this.categoryDetails});
 }
 

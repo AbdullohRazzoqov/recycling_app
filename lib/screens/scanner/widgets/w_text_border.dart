@@ -20,14 +20,14 @@ class WTextBorder extends StatelessWidget {
               foreground: Paint()
                 ..style = PaintingStyle.stroke
                 ..strokeWidth = 3
-                ..color =  AppColors.c_C6E5BA,
+                ..color = AppColors.c_C6E5BA,
             ),
           ),
           Text(
               textAlign: TextAlign.center,
               'THIS IS A $name',
               style: AppStyles.nunitoSemiBold
-                  .copyWith(fontSize: 34, color: AppColors.white)),
+                  .copyWith(fontSize: 34.sp, color: AppColors.white)),
         ],
       ),
     );

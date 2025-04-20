@@ -3,8 +3,8 @@ part of 'home_bloc.dart';
 class HomeState extends Equatable {
   final StateStatus status;
   final String message;
-  List<ProductModel> products;
-  List<CategoryModel> categories;
+  List<ProductEntities> products;
+  List<CategoryEntites> categories;
   HomeState(
       {this.status = StateStatus.normal,
       this.categories = const [],
@@ -12,8 +12,8 @@ class HomeState extends Equatable {
       this.message = ''});
 
   HomeState copyWith({
-    List<ProductModel>? products,
-    List<CategoryModel>? categories,
+    List<ProductEntities>? products,
+    List<CategoryEntites>? categories,
     StateStatus? status,
     String? message,
   }) {
@@ -26,5 +26,5 @@ class HomeState extends Equatable {
   }
 
   @override
-  List<Object?> get props => [status, message, products, categories];  
+  List<Object?> get props => [status, message, products, categories];
 }

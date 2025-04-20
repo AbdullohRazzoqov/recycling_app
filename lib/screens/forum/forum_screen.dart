@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recycling_app/core/resources/app_colors.dart';
 import 'package:recycling_app/core/widget/w_appbar.dart';
 import 'package:recycling_app/blocs/forum/forum_bloc.dart';
+import 'package:recycling_app/data/domain/usecases/firestore_usecases.dart';
 
 import '../../../core/resources/app_styles.dart';
 import '../../core/widget/w_bulleted_list.dart';
@@ -20,7 +21,7 @@ class _ForumScreenState extends State<ForumScreen> {
   bool isLoading = false;
   @override
   void initState() {
-    _forumBloc = ForumBloc();
+    _forumBloc = ForumBloc(FirestoreUsecases(firestoreRepo: context.read()));
     super.initState();
   }
 

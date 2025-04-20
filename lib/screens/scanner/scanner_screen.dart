@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:recycling_app/blocs/scanner/scan_bloc.dart';
 import 'package:recycling_app/core/resources/app_toast.dart';
+import 'package:recycling_app/data/domain/usecases/firestore_usecases.dart';
 import '../../config/route_name.dart';
 import '../../core/resources/app_colors.dart';
 import '../../core/widget/w_main.button.dart';
@@ -20,7 +21,7 @@ class _ScannerScreenState extends State<ScannerScreen> {
   late ScanBloc scanBloc;
   @override
   void initState() {
-    scanBloc = ScanBloc();
+    scanBloc = ScanBloc(FirestoreUsecases(firestoreRepo: context.read()));
     super.initState();
   }
 
@@ -77,9 +78,8 @@ class _ScannerScreenState extends State<ScannerScreen> {
                   BlocBuilder<ScanBloc, ScanState>(
                     builder: (context, state) {
                       return WMainButton(
-                        backgroundColor: barcode == null
-                            ? Colors.grey
-                            : AppColors.c_70B458,
+                        backgroundColor:
+                            barcode == null ? Colors.grey : AppColors.c_70B458,
                         margin: const EdgeInsets.symmetric(vertical: 32),
                         text: "Scan",
                         isLoading: state is ScanLoadingState,
