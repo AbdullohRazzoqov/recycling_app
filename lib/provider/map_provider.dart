@@ -8,6 +8,7 @@ import 'package:recycling_app/core/utils/constants/collection_name.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
 import '../core/resources/app_colors.dart';
+import '../core/widget/w_permissions_denied_dialog.dart';
 import '../data/model/recycling_address_model.dart';
 import '../screens/location/recycling_address_detail.dart';
 
@@ -222,6 +223,12 @@ class MapProvider extends ChangeNotifier {
 
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
+      showDialog(
+          context: _context,
+          builder: (context) => WPermissionsDeniedDialog(
+                title: 'Location services disabled',
+                content: 'Please enable location services',
+              ));
       return null;
     }
 
@@ -234,39 +241,11 @@ class MapProvider extends ChangeNotifier {
     }
 
     if (permission == LocationPermission.deniedForever) {
-      print('object');
       showDialog(
         context: _context,
-        builder: (context) => AlertDialog(
-          backgroundColor: AppColors.white,
-          title: Text('Permission required'.tr()),
-          content: Text(
-            'Permissions denied forever'.tr(),
-          ),
-          actionsAlignment: MainAxisAlignment.spaceBetween,
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text(
-                'Back'.tr(),
-                style:
-                    AppStyles.nunitoSemiBold.copyWith(color: AppColors.black),
-              ),
-            ),
-            TextButton(
-              onPressed: () async {
-                await openAppSettings();
-                Navigator.pop(context);
-              },
-              child: Text(
-                'Open app settings'.tr(),
-                style:
-                    AppStyles.nunitoSemiBold.copyWith(color: AppColors.black),
-              ),
-            ),
-          ],
+        builder: (context) => WPermissionsDeniedDialog(
+          title: 'Permission required',
+          content: 'Permissions denied forever',
         ),
       );
       return null;

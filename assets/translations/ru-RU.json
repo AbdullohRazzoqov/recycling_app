@@ -13,12 +13,13 @@
     "Recycle Categories": "Категории переработки",
     "Instructions": "Инструкции:",
     "Recycling Symbol:": "Символ переработки:",
-    "Category:":"Категория",
-    "Recycle Steps:":"Этапы переработки:",
-    "Permission required":"Требуется разрешение",
-    "Permissions denied forever":"Разрешения отклонены навсегда",
-    "Back":"Назад",
-    "Open app settings":"Открыть настройки",
-    "Please scan a barcode":"Пожалуйста, отсканируйте штрих-код"
-    
+    "Category:": "Категория",
+    "Recycle Steps:": "Этапы переработки:",
+    "Permission required": "Требуется разрешение",
+    "Permissions denied forever": "Разрешения отклонены навсегда",
+    "Back": "Назад",
+    "Open app settings": "Открыть настройки",
+    "Please scan a barcode": "Пожалуйста, отсканируйте штрих-код",
+    "Location services disabled": "Службы определения местоположения отключены",
+    "Please enable location services": "Пожалуйста, включите службы определения местоположения"
 }
