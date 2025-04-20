@@ -32,9 +32,14 @@
 
 ---
 
-## Rasmlari
+## Mahsulotni scanerlash uchun demo
+<img src="https://github.com/user-attachments/assets/b3529d00-0fbb-4c87-9a3f-6f32a4a0e777" width="500"/>
 
-```markdown
-![Bosh sahifa](assets/images/home.jpg)
-![Shtrix-kod skaner uchun demo](assets/images/scanner.jpg)
-```
+<br>
+<br>
+<br>
+<br>
+
+
+
+<img width="373" alt="Image" src="https://github.com/user-attachments/assets/c214f46c-8480-4950-8024-07a501950056" />
